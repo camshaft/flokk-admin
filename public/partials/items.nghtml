@@ -1,0 +1,35 @@
+<div class="row-fluid">
+  <form class="form-horizontal" data-ng-init="values = {}" name="createItemForm" data-ng-submit="createItem(createItemForm, values, itemList.create)">
+    <h2>New Item</h2>
+    <div data-ng-repeat="(name, conf) in itemList.create.input" class="control-group">
+      <label class="control-label" data-ng-bind="conf.prompt || name"></label>
+      <div data-ng-switch on="conf.type" class="controls">
+        <select data-ng-switch-when="select" name="{{name}}" data-ng-model="values[name]" data-ng-required="conf.required">
+          <option value="" disabled selected data-ng-bind="'Pick one...'"></option>
+          <option data-ng-repeat="option in conf.options" value="{{option.value}}" data-ng-bind="option.prompt || option.value"></option>
+        </select>
+        <textarea rows="3" data-ng-switch-when="textarea" name="{{name}}" data-ng-bind="conf.value" placeholder="{{conf.prompt || name}}" data-ng-model="values[name]" data-ng-required="conf.required"></textarea>
+        <input data-ng-switch-when="url" name="{{name}}" type="file" multiple data-handle="values[name]" data-ng-required="conf.required">
+        <div data-ng-switch-when="currency" class="input-prepend">
+          <span class="add-on">$</span>
+          <input name="{{name}}" type="number" step="any" min="0" data-ng-model="values[name]" data-ng-required="conf.required">
+        </div>
+        <div data-ng-switch-when="percentage" class="input-append">
+          <input name="{{name}}" type="number" step="any" min="0" max="100" data-ng-model="values[name]" data-ng-required="conf.required">
+          <span class="add-on">%</span>
+        </div>
+        <input data-ng-switch-default="" name="{{name}}" placeholder="{{conf.prompt || name}}" type="{{conf.type || 'text'}}" data-ng-model="values[name]" data-ng-required="conf.required">
+      </div>
+    </div>
+    <div class="control-group form-actions">
+      <div class="controls">
+        <input type="submit" value="Create" class="btn">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="row-fluid">
+  <ul class="thumbnails items">
+    <li class="span4 item" data-ng-repeat="itemLink in itemList.items"></li>
+  </ul>
+</div>

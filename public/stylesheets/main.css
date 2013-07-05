@@ -1,0 +1,10 @@
+body {
+  background: white;
+}
+
+@media (min-width: 980px) {
+  #main {
+    position: relative;
+    padding-top: 100px;
+  }
+}

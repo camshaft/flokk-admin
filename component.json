@@ -1,0 +1,50 @@
+{
+  "name": "flokk-admin",
+  "repo": "CamShaft/flokk-admin",
+  "description": "The Flokk UI",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "flokk/theme-origami": "*",
+    "CamShaft/component-angular": "*",
+    "CamShaft/bootstrap-navbar": "*",
+    "CamShaft/bootstrap-navs": "*",
+    "CamShaft/bootstrap-thumbnails": "*",
+    "CamShaft/bootstrap-responsive": "*",
+    "visionmedia/superagent": "*",
+    "ForbesLindesay/base64-encode": "*",
+    "ForbesLindesay/base64-decode": "*",
+    "component/cookie": "*",
+    "CamShaft/metric-log": "*",
+    "component/pad": "*",
+    "component/s3": "*",
+    "visionmedia/batch": "*",
+    "component/each": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "public/javascripts/config.js",
+  "scripts": [
+    "public/javascripts/index.js",
+    "public/javascripts/config.js",
+    "public/javascripts/controllers/index.js",
+    "public/javascripts/controllers/items.js",
+    "public/javascripts/controllers/sidenav.js",
+    "public/javascripts/directives/file.js",
+    "public/javascripts/filters/param.js",
+    "public/javascripts/lib/access-token.js",
+    "public/javascripts/lib/client.js",
+    "public/javascripts/lib/url-param.js"
+  ],
+  "styles": [
+    "public/stylesheets/main.css"
+  ],
+  "templates": [
+    "public/partials/404.nghtml",
+    "public/partials/admins.nghtml",
+    "public/partials/categories.nghtml",
+    "public/partials/items.nghtml",
+    "public/partials/index.nghtml",
+    "public/partials/sidenav.nghtml"
+  ]
+}

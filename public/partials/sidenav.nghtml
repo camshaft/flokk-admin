@@ -1,0 +1,13 @@
+<div class="sidenav" data-ng-controller="SidenavController">
+  <ul data-ng-show="root">
+    <li class="nav-header">
+      <a data-ng-bind="'Admins'" data-ng-href="/admins"></a>
+    </li>
+    <li class="nav-header">
+      <a data-ng-bind="'Items'" data-ng-href="/items"></a>
+    </li>
+    <li class="nav-header">
+      <a data-ng-bind="'Vendors'" data-ng-href="/vendors"></a>
+    </li>
+  </ul>
+</div>

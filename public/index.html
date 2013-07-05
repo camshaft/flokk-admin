@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="flokk-admin">
+  <head>
+    <meta charset="utf-8">
+    <title>FLOKK Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="author" content="The Flokk, LLC">
+    <meta name="description" content="">
+    <link rel="icon" type="text/css" href="/favicon.ico">
+    <link href="/public/build.css" rel="stylesheet">
+    <script type="text/javascript">
+      // Stupid hack for facebook login
+      if (window.location.hash === '#_=_') window.location.hash = '';
+    </script>
+  </head>
+  <body data-ng-controller="IndexController">
+    <div class="navbar navbar-fixed-top" data-ng-include="" src="'/partials/header.nghtml'"></div>
+
+    <div id="wrap">
+      <div class="container" id="main">
+        <div class="row">
+          <div class="span2" data-ng-include="" src="'/partials/sidenav.nghtml'"></div>
+          <div class="span10" data-ng-view=""></div>
+        </div>
+      </div>
+      <div id="push"></div>
+    </div>
+
+    <footer data-ng-include="" src="'/partials/footer.nghtml'"></footer>
+
+    <script type="text/javascript" src="/public/build.js"></script>
+  </body>
+</html>
