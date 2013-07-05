@@ -75,7 +75,8 @@ app.configure('development', function() {
  */
 
 app.get('/sign', function(req, res, next) {
-  var obj = {
+  // TODO restrict to calls from our domain
+  var config = {
     bucket: IMAGES_BUCKET,
     key: IMAGES_KEY,
     secret: IMAGES_SECRET,
@@ -85,7 +86,7 @@ app.get('/sign', function(req, res, next) {
     method: 'PUT'
   };
 
-  res.send(s3(obj));
+  res.send(s3(config));
 });
 
 /**
