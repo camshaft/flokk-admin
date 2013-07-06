@@ -12,11 +12,9 @@
     "CamShaft/bootstrap-thumbnails": "*",
     "CamShaft/bootstrap-responsive": "*",
     "visionmedia/superagent": "*",
-    "ForbesLindesay/base64-encode": "*",
-    "ForbesLindesay/base64-decode": "*",
+    "CamShaft/websafe-base64": "*",
     "component/cookie": "*",
     "CamShaft/metric-log": "*",
-    "component/pad": "*",
     "component/s3": "*",
     "visionmedia/batch": "*",
     "component/each": "*"
@@ -34,8 +32,7 @@
     "public/javascripts/directives/file.js",
     "public/javascripts/filters/param.js",
     "public/javascripts/lib/access-token.js",
-    "public/javascripts/lib/client.js",
-    "public/javascripts/lib/url-param.js"
+    "public/javascripts/lib/client.js"
   ],
   "styles": [
     "public/stylesheets/main.css"

@@ -2,7 +2,7 @@
  * Module dependencies
  */
 var app = require("..")
-  , _param = require("../lib/url-param");
+  , websafe = require("websafe-base64");
 
 /**
  * param
@@ -10,7 +10,7 @@ var app = require("..")
 function param() {
   return function(url) {
     if(!url) return;
-    return _param.encode(url);
+    return websafe.encode(url);
   };
 };
 

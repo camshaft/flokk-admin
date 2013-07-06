@@ -3,7 +3,7 @@
  */
 
 var app = require('..')
-  , param = require('../lib/url-param')
+  , param = require('websafe-base64')
   , client = require('../lib/client');
 
 /**
