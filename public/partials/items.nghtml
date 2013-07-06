@@ -29,7 +29,9 @@
   </form>
 </div>
 <div class="row-fluid">
-  <ul class="thumbnails items">
-    <li class="span4 item" data-ng-repeat="itemLink in itemList.items"></li>
+  <ul class="items">
+    <li class="item" data-ng-repeat="itemLink in itemList.items">
+      <a data-ng-href="/items/{{itemLink.href | param}}" data-ng-bind="itemLink.title || itemLink.href"></a>
+    </li>
   </ul>
 </div>

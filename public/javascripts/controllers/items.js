@@ -9,6 +9,12 @@ var app = require('..')
   , Batch = require('batch');
 
 /**
+ * Defines
+ */
+
+var ONE_YEAR = 31536000;
+
+/**
  * ItemsController
  */
 
@@ -40,6 +46,9 @@ function ItemsController($scope) {
       batch.push(function(done) {
         var uid = Math.random() * 1e12 | 0;
         var upload = new Upload(image, {name: uid+image.name});
+
+        upload.set('cache-control', 'public, max-age='+ONE_YEAR);
+
         upload.end(function(err) {
           if (err) return done(err);
           done(null, upload.req.url.split('?')[0]);

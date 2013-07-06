@@ -29,6 +29,7 @@
     "public/javascripts/config.js",
     "public/javascripts/controllers/index.js",
     "public/javascripts/controllers/items.js",
+    "public/javascripts/controllers/item.js",
     "public/javascripts/controllers/sidenav.js",
     "public/javascripts/directives/file.js",
     "public/javascripts/filters/param.js",
@@ -44,6 +45,7 @@
     "public/partials/admins.nghtml",
     "public/partials/categories.nghtml",
     "public/partials/items.nghtml",
+    "public/partials/item.nghtml",
     "public/partials/index.nghtml",
     "public/partials/sidenav.nghtml"
   ]

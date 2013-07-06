@@ -8,6 +8,7 @@ var app = require(".");
  */
 var IndexController = require("./controllers/index")
   , ItemsController = require("./controllers/items")
+  , ItemController = require("./controllers/item")
   , SidenavController = require("./controllers/sidenav");
 
 /**
@@ -18,6 +19,7 @@ var notFound = require("../partials/404.js")
   , categories = require("../partials/categories.js")
   , index = require("../partials/index.js")
   , items = require("../partials/items.js")
+  , item = require("../partials/item.js")
   , sidenav = require("../partials/sidenav.js");
 
 /**
@@ -41,6 +43,10 @@ app.config([
       .when("/items", {
         templateUrl: items,
         controller: ItemsController
+      })
+      .when("/items/:id", {
+        templateUrl: item,
+        controller: ItemController
       })
       .otherwise({
         templateUrl: notFound,
