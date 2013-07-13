@@ -3,17 +3,7 @@
  */
 
 var stack = require("flokk-angular")
-  , envs = require('envs')
-  , s3 = require('./lib/s3-sign');
-
-/**
- * Expose the app
- */
-
-var app = module.exports = stack({
-  restricted: true
-});
-
+  , envs = require('envs');
 
 /**
  * Defines
@@ -23,6 +13,42 @@ var IMAGES_BUCKET = envs('IMAGES_BUCKET', 'flokk-item-images')
   , IMAGES_KEY = envs('IMAGES_KEY')
   , IMAGES_SECRET = envs('IMAGES_SECRET')
   , IMAGES_EXPIRES = parseInt(envs('IMAGES_EXPIRES', '300000'));
+
+/**
+ * Expose the app
+ */
+
+var app = module.exports = stack();
+
+/**
+ * Configure the app
+ */
+
+app.locals({
+  ngapp: envs('APP_NAME', 'flokk-admin'),
+  site: envs('SITE_URL', 'https://www.theflokk.com'),
+  title: envs('INDEX_TITLE', 'Admin'),
+  description: envs('SITE_DESCRIPTION', ''),
+  env: {
+    BROWSER_ENV: envs('NODE_ENV'),
+    API_URL: envs('API_URL'),
+    CLOUDFRONT_URL: envs('CLOUDFRONT_URL')
+  }
+});
+
+// TODO pull these from the cdn
+
+app.locals({
+  styles: [
+    '/public/build.css'
+  ]
+});
+
+app.locals({
+  scripts: [
+    '/public/build.js'
+  ]
+});
 
 /**
  * Sign upload requests

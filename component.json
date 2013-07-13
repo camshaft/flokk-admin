@@ -18,7 +18,8 @@
     "component/s3": "*",
     "visionmedia/batch": "*",
     "component/each": "*",
-    "CamShaft/hash-file": "*"
+    "CamShaft/hash-file": "*",
+    "CamShaft/envs": "*"
   },
   "development": {},
   "license": "MIT",

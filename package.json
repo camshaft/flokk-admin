@@ -22,7 +22,8 @@
     "component": "0.16.4",
     "nghtml": "CamShaft/nghtml",
     "envs": "~0.1.0",
-    "flokk-angular": "git+https://github.com/CamShaft/flokk-angular"
+    "flokk-angular": "git+https://github.com/CamShaft/flokk-angular",
+    "theme-origami": "flokk/theme-origami"
   },
   "devDependencies": {
     "should": "~1.2.1",

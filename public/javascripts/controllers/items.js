@@ -5,6 +5,7 @@
 var app = require('..')
   , client = require('../lib/client')
   , md5 = require('hash-file')
+  , envs = require('envs')
   , each = require('each')
   , Upload = require('s3')
   , Batch = require('batch');
@@ -14,7 +15,8 @@ var app = require('..')
  */
 
 var ONE_YEAR = 31536000
-  , CLOUDFRONT_URL = '//d30wvy161n1c3v.cloudfront.net';
+  , BROWSER_ENV = envs('BROWSER_ENV', 'production')
+  , CLOUDFRONT_URL = envs('CLOUDFRONT_URL', '//d30wvy161n1c3v.cloudfront.net');
 
 /**
  * ItemsController
@@ -48,7 +50,11 @@ function ItemsController($scope) {
       batch.push(function(done) {
         md5(image, function(err, hash) {
           if (err) return done(err);
-          var name = [hash,image.name].join('-');
+
+          // Create a name based on the environment and hash
+          var name = [BROWSER_ENV,hash,image.name].join('-');
+
+          // Upload it to s3
           var upload = new Upload(image, {name: name});
 
           upload.set('cache-control', 'public, max-age='+ONE_YEAR);

@@ -1,0 +1,7 @@
+extends ../node_modules/theme-origami/layout.jade
+  
+block content
+  #main.container
+    .row
+      div(data-ng-include="", src="'/partials/sidenav.nghtml'").span2
+      div(data-ng-view="").span10
