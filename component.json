@@ -17,7 +17,8 @@
     "CamShaft/metric-log": "*",
     "component/s3": "*",
     "visionmedia/batch": "*",
-    "component/each": "*"
+    "component/each": "*",
+    "CamShaft/hash-file": "*"
   },
   "development": {},
   "license": "MIT",

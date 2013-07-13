@@ -4,6 +4,7 @@
 
 var app = require('..')
   , client = require('../lib/client')
+  , md5 = require('hash-file')
   , each = require('each')
   , Upload = require('s3')
   , Batch = require('batch');
@@ -45,15 +46,17 @@ function ItemsController($scope) {
 
     each(values.images, function(image) {
       batch.push(function(done) {
-        var uid = Math.random() * 1e12 | 0;
-        var name = uid+image.name;
-        var upload = new Upload(image, {name: name});
-
-        upload.set('cache-control', 'public, max-age='+ONE_YEAR);
-
-        upload.end(function(err) {
+        md5(image, function(err, hash) {
           if (err) return done(err);
-          done(null, [CLOUDFRONT_URL,name].join('/'));
+          var name = [hash,image.name].join('-');
+          var upload = new Upload(image, {name: name});
+
+          upload.set('cache-control', 'public, max-age='+ONE_YEAR);
+
+          upload.end(function(err) {
+            if (err) return done(err);
+            done(null, [CLOUDFRONT_URL,name].join('/'));
+          });
         });
       });
     });
