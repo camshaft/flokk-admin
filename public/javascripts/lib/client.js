@@ -4,7 +4,7 @@
 
 var superagent = require('superagent')
   , envs = require('envs')
-  , accessToken = require('./access-token');
+  , token = require('access-token');
 
 /**
  * Defines
@@ -37,7 +37,7 @@ exports.del = function() {
 };
 
 function defaults(req) {
-  req.set(accessToken.auth());
+  req.set(token.auth());
 
   // Patch the `end` function
   var _end = req.end;
