@@ -12,7 +12,8 @@ var app = require('..')
  * Defines
  */
 
-var ONE_YEAR = 31536000;
+var ONE_YEAR = 31536000
+  , CLOUDFRONT_URL = '//d30wvy161n1c3v.cloudfront.net';
 
 /**
  * ItemsController
@@ -45,13 +46,14 @@ function ItemsController($scope) {
     each(values.images, function(image) {
       batch.push(function(done) {
         var uid = Math.random() * 1e12 | 0;
-        var upload = new Upload(image, {name: uid+image.name});
+        var name = uid+image.name;
+        var upload = new Upload(image, {name: name});
 
         upload.set('cache-control', 'public, max-age='+ONE_YEAR);
 
         upload.end(function(err) {
           if (err) return done(err);
-          done(null, upload.req.url.split('?')[0]);
+          done(null, [CLOUDFRONT_URL,name].join('/'));
         });
       });
     });
