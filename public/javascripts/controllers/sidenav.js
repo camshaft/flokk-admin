@@ -4,7 +4,7 @@
 
 var app = require('..')
   , param = require('websafe-base64')
-  , client = require('../lib/client');
+  , client = require('hyperagent');
 
 /**
  * Load the partials

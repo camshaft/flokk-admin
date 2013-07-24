@@ -3,7 +3,7 @@
  */
 
 var app = require('..')
-  , client = require('../lib/client');
+  , client = require('hyperagent');
 
 /**
  * ItemController

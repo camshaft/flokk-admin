@@ -3,7 +3,7 @@
  */
 
 var app = require('..')
-  , client = require('../lib/client')
+  , client = require('hyperagent')
   , md5 = require('hash-file')
   , envs = require('envs')
   , each = require('each')

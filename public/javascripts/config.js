@@ -3,13 +3,26 @@
  */
 
 var app = require('.')
-  , envs = require('envs');
+  , envs = require('envs')
+  , token = require('access-token');
 
 /**
  * Expose the environment to the page
  */
 
 if (window.env) envs.set(window.env);
+
+/**
+ * Initialize the client
+ */
+
+var client = require('hyperagent');
+
+/**
+ * Pass the access token on all of the requests
+ */
+
+client.set(token.auth());
 
 /**
  * Initialize the controllers

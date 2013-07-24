@@ -2,8 +2,9 @@
  * Module dependencies
  */
 
-var stack = require("flokk-angular")
-  , envs = require('envs');
+var stack = require('flokk-angular')
+  , envs = require('envs')
+  , s3 = require('./lib/s3-sign');
 
 /**
  * Defines
@@ -18,7 +19,9 @@ var IMAGES_BUCKET = envs('IMAGES_BUCKET', 'flokk-item-images')
  * Expose the app
  */
 
-var app = module.exports = stack();
+var app = module.exports = stack({
+  restricted: true
+});
 
 /**
  * Configure the app

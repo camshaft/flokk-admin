@@ -11,15 +11,15 @@
     "CamShaft/bootstrap-navs": "*",
     "CamShaft/bootstrap-thumbnails": "*",
     "CamShaft/bootstrap-responsive": "*",
-    "visionmedia/superagent": "*",
     "CamShaft/websafe-base64": "*",
     "CamShaft/metric-log": "*",
-    "component/s3": "*",
-    "visionmedia/batch": "*",
-    "component/each": "*",
     "CamShaft/hash-file": "*",
     "CamShaft/envs": "*",
-    "CamShaft/access-token": "*"
+    "CamShaft/access-token": "*",
+    "CamShaft/hyperagent": "*",
+    "component/s3": "*",
+    "component/each": "*",
+    "visionmedia/batch": "*"
   },
   "development": {},
   "license": "MIT",
@@ -32,8 +32,7 @@
     "public/javascripts/controllers/item.js",
     "public/javascripts/controllers/sidenav.js",
     "public/javascripts/directives/file.js",
-    "public/javascripts/filters/param.js",
-    "public/javascripts/lib/client.js"
+    "public/javascripts/filters/param.js"
   ],
   "styles": [
     "public/stylesheets/main.css"
