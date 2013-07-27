@@ -52,7 +52,7 @@ function ItemsController($scope) {
           if (err) return done(err);
 
           // Create a name based on the environment and hash
-          var name = [BROWSER_ENV,hash,image.name].join('-');
+          var name = [BROWSER_ENV, hash, image.name].join('-');
 
           // Upload it to s3
           var upload = new Upload(image, {name: name});
