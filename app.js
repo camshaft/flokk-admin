@@ -29,7 +29,6 @@ var app = module.exports = stack({
 
 app.locals({
   ngapp: envs('APP_NAME', 'flokk-admin'),
-  site: envs('SITE_URL', 'https://www.theflokk.com'),
   title: envs('INDEX_TITLE', 'Admin'),
   description: envs('SITE_DESCRIPTION', ''),
   env: {
