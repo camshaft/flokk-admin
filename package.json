@@ -18,7 +18,7 @@
     "npm": "1.x.x"
   },
   "dependencies": {
-    "startup": "~0.1.0",
+    "startup": "~0.2.0",
     "component": "0.16.4",
     "nghtml": "CamShaft/nghtml",
     "envs": "~0.1.0",
