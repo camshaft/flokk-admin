@@ -1,7 +1,7 @@
 <div class="row-fluid">
-  <form class="form-horizontal" data-ng-init="values = {}" name="createItemForm" data-ng-submit="createItem(createItemForm, values, itemList.create)">
+  <form class="form-horizontal" data-ng-init="values = {}" name="createItemForm" data-ng-submit="createItem(createItemForm, values, items.create)">
     <h2>New Item</h2>
-    <div data-ng-repeat="(name, conf) in itemList.create.input" class="control-group">
+    <div data-ng-repeat="(name, conf) in items.create.input" class="control-group">
       <label class="control-label" data-ng-bind="conf.prompt || name"></label>
       <div data-ng-switch on="conf.type" class="controls">
         <select data-ng-switch-when="select" name="{{name}}" data-ng-model="values[name]" data-ng-required="conf.required">
@@ -28,10 +28,24 @@
     </div>
   </form>
 </div>
-<div class="row-fluid">
-  <ul class="items">
-    <li class="item" data-ng-repeat="itemLink in itemList.items">
-      <a data-ng-href="/items/{{itemLink.href | param}}" data-ng-bind="itemLink.title || itemLink.href"></a>
-    </li>
-  </ul>
+
+<h2>Items</h2>
+<div>
+  <div data-ng-controller="ItemController" data-ng-repeat="itemLink in items.items" class="grouped-edit">
+    <div>
+      Name: <span data-ng-bind="item.name"></span>
+    </div>
+    <form data-ng-submit="submit(item.update, modifiedItem)" data-ng-show="item.update">
+      <legend>Update</legend>
+      <div data-ng-repeat="(name, opts) in item.update.input" data-ng-init="modifiedItem[name] = opts.value">
+        <label data-ng-bind="opts.prompt || name"></label>
+        <input data-ng-model="modifiedItem[name]" name="{{name}}" type="{{opts.type || 'text'}}" data-ng-required="opts.required">
+      </div>
+      <input type="submit" value="Update" class="btn btn-action">
+    </form>
+    <form data-ng-submit="submit(item.delete)" data-ng-show="item.delete">
+      <legend>Remove</legend>
+      <input type="submit" value="Remove" class="btn btn-action">
+    </form>
+  </div>
 </div>

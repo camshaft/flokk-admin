@@ -36,7 +36,7 @@ function ItemsController($scope) {
         .on('error', onError)
         .end(function(res) {
           $scope.$apply(function() {
-            $scope.itemList = res.body;
+            $scope.items = res.body;
           });
         });
     });

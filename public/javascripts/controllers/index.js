@@ -25,7 +25,7 @@ function IndexController($scope, $location) {
       values = {};
     }
 
-    cb = cb || function() {};
+    cb = cb || $scope.showResult;
 
     if (!values) values = {};
 
@@ -42,9 +42,15 @@ function IndexController($scope, $location) {
       .send(values)
       .on('error', cb)
       .end(function(res){
-        if (res.ok && res.body.href === form.action) subscribe.publish(form.action);
-        if (cb) cb(null, res);
+        cb(null, res);
       })
+  };
+
+  $scope.showResult = function(err, res) {
+    if (err) return $scope.submitResult = {err: err};
+    if (!res.ok) return $scope.submitResult = {err: new Error(res.text)};
+    $scope.submitResult = {success: res.text};
+    $scope.$digest();
   };
 };
 

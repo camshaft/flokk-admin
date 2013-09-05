@@ -10,24 +10,29 @@ var app = require('..')
  */
 
 function ItemController($scope) {
+  $scope.modifiedItem = {};
+
+  $scope.$watch('itemLink', function(link) {
+    if(link) fetch(link.href, $scope);
+  });
+};
+
+function fetch (href, $scope) {
   function onError(err) {
+    // TODO show a graceful error to the user
     console.error(err.stack || err.message || err);
   };
 
-  client()
+  client
+    .get(href)
     .on('error', onError)
     .end(function(res) {
-
-      res
-        .follow('items')
-        .on('error', onError)
-        .end(function(res) {
-          $scope.$apply(function() {
-            $scope.itemList = res.body;
-          });
-        });
+      // Display it to the view
+      $scope.$apply(function() {
+        $scope.item = res.body;
+      });
     });
-};
+}
 
 /**
  * Register it with angular

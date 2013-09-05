@@ -14,3 +14,19 @@ body {
   padding: 10px;
   margin-bottom: 10px;
 }
+
+.message {
+  font-family: monospace;
+  white-space: pre;
+  color: white;
+  overflow: scroll;
+  padding: 20px;
+}
+
+.message.success {
+  background: green;
+}
+
+.message.error {
+  background: red;
+}

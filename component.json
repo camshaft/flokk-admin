@@ -17,7 +17,7 @@
     "CamShaft/envs": "*",
     "CamShaft/access-token": "*",
     "CamShaft/hyperagent": "*",
-    "component/s3": "*",
+    "component/s3": "aee404d13c7fa1a5dbfdaccd44cc6266767c1a87",
     "component/each": "*",
     "visionmedia/batch": "*",
     "component/type": "*"

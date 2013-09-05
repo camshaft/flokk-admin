@@ -4,4 +4,8 @@ block content
   #main.container
     .row
       div(data-ng-include="", src="'/partials/sidenav.nghtml'").span2
-      div(data-ng-view="").span10
+      .span10
+        h3(data-ng-show="submitResult") Last edit result:
+        div(data-ng-show="!!submitResult.err", data-ng-bind="submitResult.err.stack").message.error
+        div(data-ng-show="!!submitResult.success", data-ng-bind="submitResult.success").message.success
+        div(data-ng-view="")
