@@ -33,7 +33,9 @@ var IndexController = require('./controllers/index')
   , CategoryController = require('./controllers/category')
   , ItemsController = require('./controllers/items')
   , ItemController = require('./controllers/item')
-  , SidenavController = require('./controllers/sidenav');
+  , SidenavController = require('./controllers/sidenav')
+  , VendorsController = require('./controllers/vendors')
+  , VendorController = require('./controllers/vendor');
 
 /**
  * Load the partials
@@ -45,7 +47,8 @@ var notFound = require('../partials/404.js')
   , index = require('../partials/index.js')
   , items = require('../partials/items.js')
   , item = require('../partials/item.js')
-  , sidenav = require('../partials/sidenav.js');
+  , sidenav = require('../partials/sidenav.js')
+  , vendors = require('../partials/vendors.js');
 
 /**
  * Initialize the filters used outside of the controllers
@@ -78,6 +81,10 @@ app.config([
       .when('/items/:id', {
         templateUrl: item,
         controller: ItemController
+      })
+      .when('/vendors', {
+        templateUrl: vendors,
+        controller: VendorsController
       })
       .otherwise({
         templateUrl: notFound,

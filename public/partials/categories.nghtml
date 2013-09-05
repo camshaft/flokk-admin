@@ -9,11 +9,11 @@
 
 <h2>Categories</h2>
 <div>
-  <div data-ng-controller="CategoryController" data-ng-repeat="categoryLink in categories.categories" class="category">
+  <div data-ng-controller="CategoryController" data-ng-repeat="categoryLink in categories.categories" class="grouped-edit">
     <div>
       Title: <span data-ng-bind="category.title"></span>
     </div>
-    <form data-ng-submit="submit(category.update, modifiedCategory)">
+    <form data-ng-submit="submit(category.update, modifiedCategory)" data-ng-show="category.update">
       <legend>Update</legend>
       <div data-ng-repeat="(name, opts) in category.update.input" data-ng-init="modifiedCategory[name] = opts.value">
         <label data-ng-bind="opts.prompt || name"></label>
@@ -21,7 +21,7 @@
       </div>
       <input type="submit" value="Update" class="btn btn-action">
     </form>
-    <form data-ng-submit="submit(category.delete)">
+    <form data-ng-submit="submit(category.delete)" data-ng-show="category.delete">
       <legend>Remove</legend>
       <input type="submit" value="Remove" class="btn btn-action">
     </form>

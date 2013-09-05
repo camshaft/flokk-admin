@@ -1,0 +1,29 @@
+<h2>New vendor</h2>
+<form data-ng-submit="submit(vendors.create, newVendor)">
+  <div data-ng-repeat="(name, opts) in vendors.create.input">
+    <label data-ng-bind="opts.prompt || name"></label>
+    <input data-ng-model="newVendor[name]" name="{{name}}" type="{{opts.type || 'text'}}" data-ng-required="opts.required">
+  </div>
+  <input type="submit" value="Create" class="btn btn-action">
+</form>
+
+<h2>Vendors</h2>
+<div>
+  <div data-ng-controller="VendorController" data-ng-repeat="vendorLink in vendors.vendors" class="grouped-edit">
+    <div>
+      Name: <span data-ng-bind="vendor.name"></span>
+    </div>
+    <form data-ng-submit="submit(vendor.update, modifiedVendor)" data-ng-show="vendor.update">
+      <legend>Update</legend>
+      <div data-ng-repeat="(name, opts) in vendor.update.input" data-ng-init="modifiedVendor[name] = opts.value">
+        <label data-ng-bind="opts.prompt || name"></label>
+        <input data-ng-model="modifiedVendor[name]" name="{{name}}" type="{{opts.type || 'text'}}" data-ng-required="opts.required">
+      </div>
+      <input type="submit" value="Update" class="btn btn-action">
+    </form>
+    <form data-ng-submit="submit(vendor.delete)" data-ng-show="vendor.delete">
+      <legend>Remove</legend>
+      <input type="submit" value="Remove" class="btn btn-action">
+    </form>
+  </div>
+</div>
