@@ -42,13 +42,13 @@ app.locals({
 
 app.locals({
   styles: [
-    '/public/build.css'
+    '/build/build.css'
   ]
 });
 
 app.locals({
   scripts: [
-    '/public/build.js'
+    '/build/build.js'
   ]
 });
 

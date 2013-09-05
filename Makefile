@@ -1,6 +1,6 @@
 
 build: components
-	@./node_modules/.bin/component build --copy --use ./nghtml --standalone flokk-admin --prefix "/public"
+	@./node_modules/.bin/component build --copy --use ./nghtml --standalone flokk-admin
 
 components: component.json
 	@./node_modules/.bin/component install

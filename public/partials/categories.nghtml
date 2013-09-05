@@ -1,0 +1,29 @@
+<h2>New category</h2>
+<form data-ng-submit="submit(categories.create, newCategory)">
+  <div data-ng-repeat="(name, opts) in categories.create.input">
+    <label data-ng-bind="opts.prompt || name"></label>
+    <input data-ng-model="newCategory[name]" name="{{name}}" type="{{opts.type || 'text'}}" data-ng-required="opts.required">
+  </div>
+  <input type="submit" value="Create" class="btn btn-action">
+</form>
+
+<h2>Categories</h2>
+<div>
+  <div data-ng-controller="CategoryController" data-ng-repeat="categoryLink in categories.categories" class="category">
+    <div>
+      Title: <span data-ng-bind="category.title"></span>
+    </div>
+    <form data-ng-submit="submit(category.update, modifiedCategory)">
+      <legend>Update</legend>
+      <div data-ng-repeat="(name, opts) in category.update.input" data-ng-init="modifiedCategory[name] = opts.value">
+        <label data-ng-bind="opts.prompt || name"></label>
+        <input data-ng-model="modifiedCategory[name]" name="{{name}}" type="{{opts.type || 'text'}}" data-ng-required="opts.required">
+      </div>
+      <input type="submit" value="Update" class="btn btn-action">
+    </form>
+    <form data-ng-submit="submit(category.delete)">
+      <legend>Remove</legend>
+      <input type="submit" value="Remove" class="btn btn-action">
+    </form>
+  </div>
+</div>

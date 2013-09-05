@@ -19,7 +19,8 @@
     "CamShaft/hyperagent": "*",
     "component/s3": "*",
     "component/each": "*",
-    "visionmedia/batch": "*"
+    "visionmedia/batch": "*",
+    "component/type": "*"
   },
   "development": {},
   "license": "MIT",
@@ -28,6 +29,8 @@
     "public/javascripts/index.js",
     "public/javascripts/config.js",
     "public/javascripts/controllers/index.js",
+    "public/javascripts/controllers/categories.js",
+    "public/javascripts/controllers/category.js",
     "public/javascripts/controllers/items.js",
     "public/javascripts/controllers/item.js",
     "public/javascripts/controllers/sidenav.js",

@@ -29,6 +29,8 @@ client.set(token.auth());
  */
 
 var IndexController = require('./controllers/index')
+  , CategoriesController = require('./controllers/categories')
+  , CategoryController = require('./controllers/category')
   , ItemsController = require('./controllers/items')
   , ItemController = require('./controllers/item')
   , SidenavController = require('./controllers/sidenav');
@@ -64,6 +66,10 @@ app.config([
       .when('/', {
         templateUrl: index,
         controller: IndexController
+      })
+      .when('/categories', {
+        templateUrl: categories,
+        controller: CategoriesController
       })
       .when('/items', {
         templateUrl: items,

@@ -4,6 +4,9 @@
       <a data-ng-bind="'Admins'" data-ng-href="/admins"></a>
     </li>
     <li class="nav-header">
+      <a data-ng-bind="'Categories'" data-ng-href="/categories"></a>
+    </li>
+    <li class="nav-header">
       <a data-ng-bind="'Items'" data-ng-href="/items"></a>
     </li>
     <li class="nav-header">
