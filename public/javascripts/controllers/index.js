@@ -25,8 +25,6 @@ function IndexController($scope, $location) {
       values = {};
     }
 
-    cb = cb || $scope.showResult;
-
     if (!values) values = {};
 
     var method = (form.method || 'post').toLowerCase();
@@ -40,16 +38,20 @@ function IndexController($scope, $location) {
 
     (client[method])(form.action)
       .send(values)
-      .on('error', cb)
+      .on('error', function(err) {
+        if (cb) cb(err);
+        $scope.showResult(err);
+      })
       .end(function(res){
-        cb(null, res);
+        if (cb) cb(null, res);
+        $scope.showResult(null, res);
       })
   };
 
   $scope.showResult = function(err, res) {
     if (err) $scope.submitResult = {err: err};
-    if (!res.ok) $scope.submitResult = {err: new Error(res.text)};
-    if (res.ok) $scope.submitResult = {success: res.text};
+    if (res && !res.ok) $scope.submitResult = {err: new Error(res.text)};
+    if (res && res.ok) $scope.submitResult = {success: res.text};
     $scope.$digest();
   };
 };

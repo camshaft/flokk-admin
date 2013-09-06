@@ -27,19 +27,26 @@ function ItemsController($scope, $rootScope) {
     console.error(err.stack || err.message || err);
   };
 
-  client()
-    .on('error', onError)
-    .end(function(res) {
+  function loadItems(ignoreCache) {
+    client()
+      .on('error', onError)
+      .end(function(res) {
 
-      res
-        .follow('items')
-        .on('error', onError)
-        .end(function(res) {
-          $scope.$apply(function() {
-            $scope.items = res.body;
+        var req = res
+          .follow('items')
+          .on('error', onError);
+
+        if (ignoreCache) req.ignoreCache();
+
+        req
+          .end(function(res) {
+            $scope.$apply(function() {
+              $scope.items = res.body;
+            });
           });
-        });
-    });
+      });
+  };
+  loadItems();
 
   $scope.createItem = function(ngform, values, form) {
     // TODO verify the form
@@ -75,7 +82,9 @@ function ItemsController($scope, $rootScope) {
 
       values.images = images;
 
-      $scope.submit(form, values);
+      $scope.submit(form, values, function() {
+        loadItems(true);
+      });
     });
   };
 };
