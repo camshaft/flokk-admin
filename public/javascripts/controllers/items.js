@@ -22,7 +22,7 @@ var ONE_YEAR = 31536000
  * ItemsController
  */
 
-function ItemsController($scope) {
+function ItemsController($scope, $rootScope) {
   function onError(err) {
     console.error(err.stack || err.message || err);
   };
@@ -68,17 +68,14 @@ function ItemsController($scope) {
     });
 
     batch.end(function(err, images) {
-      // TODO handle error
+      if (err) {
+        $rootScope.submitResult = {err: err};
+        return $rootScope.$digest();
+      }
+
       values.images = images;
 
-      // TODO pull the method from the form
-      client
-        .post(form.action)
-        .send(values)
-        .on('error', onError)
-        .end(function(res) {
-          console.log(res);
-        });
+      $scope.submit(form, values);
     });
   };
 };
@@ -89,6 +86,7 @@ function ItemsController($scope) {
 
 app.controller('ItemsController', [
   '$scope',
+  '$rootScope',
   ItemsController
 ]);
 

@@ -47,9 +47,9 @@ function IndexController($scope, $location) {
   };
 
   $scope.showResult = function(err, res) {
-    if (err) return $scope.submitResult = {err: err};
-    if (!res.ok) return $scope.submitResult = {err: new Error(res.text)};
-    $scope.submitResult = {success: res.text};
+    if (err) $scope.submitResult = {err: err};
+    if (!res.ok) $scope.submitResult = {err: new Error(res.text)};
+    if (res.ok) $scope.submitResult = {success: res.text};
     $scope.$digest();
   };
 };
